@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Digital Portal for Akatsi Market, Ghana. Real-time commodity prices, next market day countdown, interactive zone map, and local vendor directory.">
+  <title>Akatsi Market Portal - Volta Regional Commercial Hub</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="glow-bg glow-green"></div>
+  <div class="glow-bg glow-gold"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container container">
+      <div class="logo">
+        <i class="fa-solid fa-store logo-icon"></i>
+        <div class="logo-text">
+          <h1>Akatsi<span>MarketP</span></h1>
+          <span class="tagline">Volta's Commercial Heartbeat</span>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#countdown-sec" class="nav-link active"><i class="fa-solid fa-calendar-day"></i> <span data-i18n="schedule">Schedule</span></a></li>
+          <li><a href="#prices-sec" class="nav-link"><i class="fa-solid fa-chart-line"></i> <span data-i18n="prices">Prices</span></a></li>
+          <li><a href="#map-sec" class="nav-link"><i class="fa-solid fa-map-location-dot"></i> <span data-i18n="map">Map</span></a></li>
+          <li><a href="#directory-sec" class="nav-link"><i class="fa-solid fa-users"></i> <span data-i18n="directory">Directory</span></a></li>
+          <li><a href="#guide-sec" class="nav-link"><i class="fa-solid fa-bus"></i> <span data-i18n="guide">Guide</span></a></li>
+        </ul>
+      </nav>
+      <div style="display: flex; align-items: center;">
+        <div class="live-indicator">
+          <span class="ping-pulse"></span>
+          <span class="indicator-text" id="live-indicator-text" data-i18n="liveIndicator">LIVE MARKET UPDATE</span>
+        </div>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ee">EE</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero & Countdown Section -->
+  <section id="countdown-sec" class="section hero-section container">
+    <div class="hero-grid">
+      <div class="hero-info">
+        <span class="badge" data-i18n="welcome">Welcome to Akatsi, Ghana</span>
+        <h2 data-i18n="subWelcome">Explore Volta’s Largest Four-Day Hub</h2>
+        <p data-i18n="welcomeText">Connecting farmers, wholesalers, and retail buyers. Track live commodity prices, locate trusted local vendors, and plan your next trading visit with ease.</p>
+        
+        <div class="market-status-box">
+          <div class="status-header">
+            <i class="fa-solid fa-clock-rotate-left text-accent"></i>
+            <h3 data-i18n="statusBoxTitle">Market Day Status</h3>
+          </div>
+          <p id="market-status-text">Calculating status...</p>
+        </div>
+      </div>
+
+      <div class="countdown-card glass">
+        <div class="card-glow"></div>
+        <span class="card-subtitle" data-i18n="countdownSubtitle">COUNTDOWN TO MAJOR MARKET DAY</span>
+        <h3 id="next-market-date">Monday, July 6, 2026</h3>
+        
+        <div class="countdown-timer">
+          <div class="timer-unit">
+            <span id="days" class="timer-num">00</span>
+            <span class="timer-label" data-i18n="days">Days</span>
+          </div>
+          <div class="timer-separator">:</div>
+          <div class="timer-unit">
+            <span id="hours" class="timer-num">00</span>
+            <span class="timer-label" data-i18n="hours">Hours</span>
+          </div>
+          <div class="timer-separator">:</div>
+          <div class="timer-unit">
+            <span id="minutes" class="timer-num">00</span>
+            <span class="timer-label" data-i18n="minutes">Mins</span>
+          </div>
+          <div class="timer-separator">:</div>
+          <div class="timer-unit">
+            <span id="seconds" class="timer-num">00</span>
+            <span class="timer-label" data-i18n="seconds">Secs</span>
+          </div>
+        </div>
+
+        <div class="countdown-footer">
+          <i class="fa-solid fa-circle-info"></i>
+          <span data-i18n="countdownFooter">Akatsi operates on a recurring 4-day cycle. Traders arrive from all parts of West Africa.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commodity Prices Section -->
+  <section id="prices-sec" class="section container">
+    <div class="section-header">
+      <div class="section-title">
+        <span class="section-badge" data-i18n="priceTitleBadge"><i class="fa-solid fa-tags"></i> RETAIL & WHOLESALE</span>
+        <h2 data-i18n="priceTitle">Commodity Price Index</h2>
+      </div>
+      <p class="section-desc" data-i18n="priceDesc">Monitored prices of staple farm produce and livestock in Akatsi. Updated on market days.</p>
+    </div>
+
+    <!-- Category selector for prices -->
+    <div class="price-filters filter-tabs">
+      <button class="filter-tab active" data-price-cat="all" data-i18n="allCategories">All Items</button>
+      <button class="filter-tab" data-price-cat="Tubers" data-i18n="tubers">Tubers</button>
+      <button class="filter-tab" data-price-cat="Grains" data-i18n="grains">Grains</button>
+      <button class="filter-tab" data-price-cat="Vegetables" data-i18n="veg">Vegetables & Fruits</button>
+      <button class="filter-tab" data-price-cat="Livestock" data-i18n="livestock">Livestock</button>
+      <button class="filter-tab" data-price-cat="Clothing" data-i18n="clothing">Clothing & Apparel</button>
+      <button class="filter-tab" data-price-cat="Prepared Food" data-i18n="food">Prepared Food</button>
+      <button class="filter-tab" data-price-cat="Crafts & Tools" data-i18n="craftsTools">Crafts & Tools</button>
+    </div>
+
+    <div class="price-grid" id="price-grid-container">
+      <!-- Dynamic Price Cards will be inserted here by app.js -->
+    </div>
+
+    <!-- Interactive Price Detail Modal (Glow Box) -->
+    <div class="price-detail-card glass hide" id="price-detail-card">
+      <button class="close-btn" id="close-price-details"><i class="fa-solid fa-xmark"></i></button>
+      <div class="price-detail-grid">
+        <div class="price-detail-left">
+          <div class="detail-header">
+            <span class="detail-category" id="detail-category">Tubers</span>
+            <h3 id="detail-name">White Yam (Tuber)</h3>
+          </div>
+          <p id="detail-description">Premium Volta Region yams. Dry, starchy, and perfect for boiling or pounding.</p>
+          <div class="detail-metrics">
+            <div class="metric">
+              <span class="metric-lbl" data-i18n="latestPrice">Current Price</span>
+              <span class="metric-val text-accent" id="detail-price">GH₵ 35.00</span>
+            </div>
+            <div class="metric">
+              <span class="metric-lbl" data-i18n="baseUnitLabel">Base Unit</span>
+              <span class="metric-val" id="detail-unit">Medium Tuber</span>
+            </div>
+            <div class="metric">
+              <span class="metric-lbl" data-i18n="changeLabel">Change (4 Days)</span>
+              <span class="metric-val" id="detail-change">+7.7%</span>
+            </div>
+          </div>
+        </div>
+        <div class="price-detail-right">
+          <h4 data-i18n="priceTrendLabel">Price Trend (Last 30 Days)</h4>
+          <div class="trend-chart-wrapper">
+            <!-- Dynamic SVG Chart -->
+            <svg class="trend-chart" viewBox="0 0 300 120" id="trend-chart-svg">
+              <path d="" fill="none" stroke="var(--primary)" stroke-width="3" id="chart-path"/>
+              <path d="" fill="url(#chart-grad)" id="chart-fill"/>
+              <defs>
+                <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--primary-glow)" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="var(--primary-glow)" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="chart-labels">
+            <span data-i18n="daysAgo">30 days ago</span>
+            <span data-i18n="latest">Latest</span>
+          </div>
+
+          <!-- Interactive Commodity Calculator -->
+          <div class="calculator-container glass">
+            <h4><i class="fa-solid fa-calculator text-primary"></i> <span id="calc-title-text" data-i18n="calcTitle">Purchase Calculator</span></h4>
+            <div class="calc-inputs">
+              <input type="number" id="calc-qty" value="1" min="1">
+              <span id="calc-unit">Tuber</span>
+            </div>
+            <div class="calc-result">
+              <span id="calc-result-label" data-i18n="estTotal">Estimated Total:</span>
+              <strong id="calc-total">GH₵ 35.00</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Market Map Section -->
+  <section id="map-sec" class="section container">
+    <div class="section-header">
+      <div class="section-title">
+        <span class="section-badge" data-i18n="mapTitleBadge"><i class="fa-solid fa-map"></i> INTERACTIVE GUIDE</span>
+        <h2 data-i18n="mapTitle">Market Quadrant Map</h2>
+      </div>
+      <p class="section-desc" data-i18n="mapDesc">Hover over the quadrants to inspect sections. Click on a zone to view lists of vendors located there.</p>
+    </div>
+
+    <div class="map-grid">
+      <div class="map-container glass">
+        <!-- SVG Map of Akatsi Market -->
+        <svg id="market-svg-map" viewBox="0 0 600 400" width="100%" height="100%">
+          <!-- Definitions for patterns/gradients -->
+          <defs>
+            <linearGradient id="grid-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.02)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
+            </linearGradient>
+          </defs>
+          
+          <!-- Outer border -->
+          <rect x="10" y="10" width="580" height="380" rx="15" fill="url(#grid-grad)" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+          
+          <!-- Inner Roadways/Grids (representing junctions) -->
+          <!-- Main horizontal crossing road -->
+          <path d="M 10 200 L 590 200" stroke="rgba(255,255,255,0.15)" stroke-width="24" stroke-dasharray="8 6" fill="none"/>
+          <!-- Main vertical crossing road -->
+          <path d="M 300 10 L 300 390" stroke="rgba(255,255,255,0.15)" stroke-width="24" stroke-dasharray="8 6" fill="none"/>
+          
+          <!-- Central Junction Ring -->
+          <circle cx="300" cy="200" r="35" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="6"/>
+          <text x="300" y="204" font-family="Outfit" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">Junction</text>
+
+          <!-- Zone A: Agriculture (Top Left) -->
+          <g id="zone-agriculture" class="map-zone" data-zone="agriculture">
+            <rect x="30" y="30" width="240" height="140" rx="10" />
+            <text x="150" y="100" class="zone-label">AGRICULTURE ZONE</text>
+            <text x="150" y="120" class="zone-sub">Yam, Cassava, Veggies</text>
+          </g>
+
+          <!-- Zone B: Clothing & Apparel (Top Right) -->
+          <g id="zone-clothing" class="map-zone" data-zone="clothing">
+            <rect x="330" y="30" width="240" height="140" rx="10" />
+            <text x="450" y="100" class="zone-label">APPAREL & TEXTILES</text>
+            <text x="450" y="120" class="zone-sub">Kente, Prints & Shoes</text>
+          </g>
+
+          <!-- Zone C: Livestock Yard (Bottom Left) -->
+          <g id="zone-livestock" class="map-zone" data-zone="livestock">
+            <rect x="30" y="230" width="240" height="140" rx="10" />
+            <text x="150" y="300" class="zone-label">LIVESTOCK YARD</text>
+            <text x="150" y="320" class="zone-sub">Goats, Sheep, Poultry</text>
+          </g>
+
+          <!-- Zone D: Food Court & Transport (Bottom Right) -->
+          <g id="zone-food" class="map-zone" data-zone="food">
+            <rect x="330" y="230" width="240" height="140" rx="10" />
+            <text x="450" y="300" class="zone-label">FOOD & TRANSPORT</text>
+            <text x="450" y="320" class="zone-sub">Akple Joints & Trotro Park</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Zone Information Detail Panel -->
+      <div class="map-info-panel glass" id="map-info-panel">
+        <div class="panel-header">
+          <i class="fa-solid fa-map-pin text-primary"></i>
+          <h3 id="selected-zone-name" data-i18n="mapInfoTitle">Select a Quadrant</h3>
+        </div>
+        <p id="selected-zone-desc" data-i18n="mapInfoDesc">Hover over any region on the map to inspect its general merchandise, accessibility, and active stalls.</p>
+        
+        <div class="zone-highlights hide" id="zone-highlights">
+          <div class="highlight-item">
+            <span class="hl-title" data-i18n="mapHighlightProduce">Major Produce:</span>
+            <span class="hl-desc" id="hl-produce">Tubers, Fruits, Grains</span>
+          </div>
+          <div class="highlight-item">
+            <span class="hl-title" data-i18n="mapHighlightAccess">Accessibility:</span>
+            <span class="hl-desc" id="hl-access">Near Main Entrance</span>
+          </div>
+          <div class="highlight-item">
+            <span class="hl-title" data-i18n="mapHighlightCount">Stall Count:</span>
+            <span class="hl-desc" id="hl-count">Over 150 Active Stalls</span>
+          </div>
+          <button class="btn btn-primary" id="filter-zone-btn" data-i18n="mapFilterBtn">
+            <i class="fa-solid fa-filter"></i> Filter Directory for this Zone
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vendor Directory Section -->
+  <section id="directory-sec" class="section container">
+    <div class="section-header">
+      <div class="section-title">
+        <span class="section-badge" data-i18n="dirTitleBadge"><i class="fa-solid fa-store"></i> REGISTERED STALLS</span>
+        <h2 data-i18n="dirTitle">Stall & Vendor Directory</h2>
+      </div>
+      <p class="section-desc" data-i18n="dirDesc">Search and get in touch with wholesalers and retailers. View ratings and verify stall details.</p>
+      <p class="results-counter" id="directory-results-count">Showing 6 of 6 registered stalls</p>
+    </div>
+
+    <!-- Search & Filter Controls -->
+    <div class="directory-controls glass">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="vendor-search-input" placeholder="Search by vendor name, stall, or product..." data-i18n-placeholder="dirSearchPlaceholder">
+      </div>
+
+      <div class="filter-group">
+        <label for="category-select" data-i18n="dirCategoryLabel"><i class="fa-solid fa-filter"></i> Category:</label>
+        <select id="category-select">
+          <option value="all" data-i18n="allCategories">All Categories</option>
+          <option value="Tubers" data-i18n="tubers">Tubers (Yam, Cassava)</option>
+          <option value="Vegetables" data-i18n="veg">Vegetables (Shallots, Tomatoes)</option>
+          <option value="Livestock" data-i18n="livestock">Livestock (Goat, Sheep, Fowl)</option>
+          <option value="Clothing" data-i18n="clothing">Clothing & Apparel</option>
+          <option value="Prepared Food" data-i18n="food">Prepared Food</option>
+          <option value="Crafts & Tools" data-i18n="craftsTools">Crafts & Tools</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="zone-select" data-i18n="dirZoneLabel"><i class="fa-solid fa-map-location-dot"></i> Zone:</label>
+        <select id="zone-select">
+          <option value="all" data-i18n="allCategories">All Zones</option>
+          <option value="agriculture" data-i18n="zoneAgri">Agriculture Zone</option>
+          <option value="clothing" data-i18n="zoneCloth">Apparel & Textiles</option>
+          <option value="livestock" data-i18n="zoneLive">Livestock Yard</option>
+          <option value="food" data-i18n="zoneFood">Food & Transport</option>
+        </select>
+      </div>
+
+      <button class="btn reset-btn" id="reset-directory-filters" data-i18n="dirResetBtn">
+        <i class="fa-solid fa-arrow-rotate-left"></i> Reset
+      </button>
+    </div>
+
+    <!-- Directory Grid -->
+    <div class="directory-grid" id="directory-grid-container">
+      <!-- Dynamic Vendor cards will be loaded here -->
+    </div>
+  </section>
+
+  <!-- Local Guide, News & Transport Section -->
+  <section id="guide-sec" class="section container">
+    <div class="guide-grid">
+      <!-- Transport Guides -->
+      <div class="guide-card glass">
+        <h3><i class="fa-solid fa-bus text-accent"></i> Transport & Connectivity</h3>
+        <p>Akatsi is strategically located at the intersection of routes leading to Accra, Ho, and Aflao (Togo border).</p>
+        
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Route</th>
+                <th>Type</th>
+                <th>Frequency</th>
+                <th>Est. Fare</th>
+              </tr>
+            </thead>
+            <tbody id="transport-table-body">
+              <!-- Dynamically populated from data.js -->
+            </tbody>
+          </table>
+        </div>
+        <div class="transport-image-wrapper" style="margin-top: 25px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-glass); height: 160px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+          <img src="akatsi_transport_photo.png" alt="Akatsi Lorry Park" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: all 0.3s ease;" onmouseover="this.style.opacity=1; this.style.transform='scale(1.05)'" onmouseout="this.style.opacity=0.8; this.style.transform='scale(1)'">
+        </div>
+      </div>
+
+      <!-- History & Heritage Card -->
+      <div class="guide-card glass">
+        <h3><i class="fa-solid fa-monument text-accent"></i> <span data-i18n="histTitle">History & Heritage</span></h3>
+        <p data-i18n="histBody1">Akatsi was founded by the great hunter Adela Letsa Korba I in the 16th century, whose ancestors hailed from Anloga.</p>
+        <p data-i18n="histBody2">The market land was acquired from the Letsa Korba Family, who are the Overlords of Akatsi.</p>
+        
+        <div class="history-image-wrapper" style="margin-top: 25px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-glass); height: 160px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+          <img src="akatsi_market_photo.png" alt="Akatsi Market Photo" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: all 0.3s ease;" onmouseover="this.style.opacity=1; this.style.transform='scale(1.05)'" onmouseout="this.style.opacity=0.8; this.style.transform='scale(1)'">
+        </div>
+      </div>
+
+      <!-- Local Projects & News -->
+      <div class="guide-card glass">
+        <h3><i class="fa-solid fa-newspaper text-accent"></i> Community News & Projects</h3>
+        <div class="news-list" id="news-list-container">
+          <!-- Dynamically populated from data.js -->
+        </div>
+
+        <div class="project-spotlight">
+          <div class="spotlight-title">
+            <span class="spotlight-pulse"></span>
+            <h4>Project Spotlight: The 24-Hour Market Initiative</h4>
+          </div>
+          <p>Akatsi is transforming into a 24-hour trading hub. To facilitate this, the local assembly has commissioned modern security outposts and lighting infrastructure to ensure high safety standards for late-night traders.</p>
+        </div>
+        <div class="trader-image-wrapper" style="margin-top: 25px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-glass); height: 160px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+          <img src="akatsi_trader_photo.png" alt="Akatsi Market Trader" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: all 0.3s ease;" onmouseover="this.style.opacity=1; this.style.transform='scale(1.05)'" onmouseout="this.style.opacity=0.8; this.style.transform='scale(1)'">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Investment & Business CTA Section -->
+  <section class="section container">
+    <div class="investment-cta glass">
+      <div class="cta-glow"></div>
+      <div class="cta-content">
+        <span class="badge" data-i18n="ctaBadge">Investment & Growth</span>
+        <h2 data-i18n="ctaTitle">Come Invest and Grow Your Business</h2>
+        <p data-i18n="ctaDesc">Akatsi is one of the fastest-developing municipalities in Ghana, offering immense investment and business potentials. Partner with Volta's commercial gateway today—you will never regret investing in Akatsi.</p>
+        <div class="cta-actions">
+          <a href="#directory-sec" class="btn btn-primary"><i class="fa-solid fa-store"></i> Explore Stalls</a>
+          <a href="mailto:info@akatsimarketp.gov.gh" class="btn btn-secondary reset-btn"><i class="fa-solid fa-envelope"></i> Contact Assembly</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-left">
+        <h3>Akatsi<span>MarketP</span></h3>
+        <p>A digital interface driving commerce, transparency, and growth in Akatsi South Municipality, Volta Region, Ghana.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#countdown-sec">Schedule</a></li>
+          <li><a href="#prices-sec">Commodity Index</a></li>
+          <li><a href="#map-sec">Market Map</a></li>
+          <li><a href="#directory-sec">Directory</a></li>
+        </ul>
+      </div>
+      <div class="footer-right">
+        <h4>Contact & Inquiries</h4>
+        <p><i class="fa-solid fa-location-dot"></i> Akatsi Municipal Assembly Office, Volta Region, Ghana</p>
+        <p><i class="fa-solid fa-envelope"></i> info@akatsimarketp.gov.gh</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Akatsi Market Portal Project. Empowered by modern technology.</p>
+    </div>
+  </footer>
+
+  <!-- Vendor Inquiry Modal -->
+  <div class="modal-backdrop" id="inquiry-modal">
+    <div class="modal-card glass">
+      <h3 id="modal-title" data-i18n="dirInquireTitle">Contact Vendor</h3>
+      <div class="vendor-stall-info">
+        <i class="fa-solid fa-store text-primary"></i> <span id="modal-vendor-stall">Zone A, Stall 14</span>
+      </div>
+      <textarea id="inquiry-message" placeholder="Type your inquiry or message here..." data-i18n-placeholder="dirInquirePlaceholder"></textarea>
+      <div class="modal-actions">
+        <button class="btn btn-secondary reset-btn" id="close-inquiry-modal" data-i18n="dirCancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="submit-inquiry" data-i18n="dirSendBtn">Send Message</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Core Javascript imports -->
+  <script src="data.js?v=2"></script>
+  <script src="app.js?v=2"></script>
+</body>
+</html>
