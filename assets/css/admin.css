@@ -1,0 +1,452 @@
+/* assets/css/admin.css - Admin Dashboard Stylesheet */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+
+:root {
+    --primary: #0F3057;       /* Royal Deep Blue */
+    --accent: #D4AF37;        /* Royal Gold */
+    --dark-bg: #081627;
+    --light-bg: #f5f7f6;
+    --card-bg: #ffffff;
+    --border-color: #dee2e0;
+    --text-main: #2b3531;
+    --text-muted: #6c757d;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Dashboard Layout */
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.admin-sidebar {
+    width: 260px;
+    background-color: var(--dark-bg);
+    color: #ffffff;
+    border-right: 3px solid var(--accent);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.sidebar-header {
+    padding: 25px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+}
+
+.sidebar-header h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--accent);
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.sidebar-header p {
+    margin: 5px 0 0 0;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
+}
+
+.sidebar-menu li a:hover, 
+.sidebar-menu li.active a {
+    color: #ffffff;
+    background-color: rgba(255,255,255,0.03);
+    border-left-color: var(--accent);
+}
+
+.sidebar-menu li a i {
+    width: 25px;
+    font-size: 1.1rem;
+    margin-right: 12px;
+    color: var(--accent);
+}
+
+/* Content Area */
+.admin-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.admin-navbar h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--primary);
+}
+
+.admin-body {
+    padding: 30px;
+    flex-grow: 1;
+}
+
+/* Stat Cards */
+.stat-card {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--primary);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border-top-color: var(--accent);
+}
+
+.stat-info h6 {
+    margin: 0;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.stat-info h2 {
+    margin: 8px 0 0 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(17,75,62,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+/* Tables */
+.table-royal {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+
+.table-royal table {
+    margin-bottom: 0;
+}
+
+.table-royal th {
+    background-color: var(--primary);
+    color: #ffffff;
+    font-weight: 500;
+    border-bottom: 2px solid var(--accent);
+    padding: 14px 20px;
+}
+
+.table-royal td {
+    padding: 14px 20px;
+    vertical-align: middle;
+}
+
+.badge-royal {
+    background-color: rgba(17,75,62,0.1);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 5px 10px;
+    font-weight: 500;
+    border-radius: 4px;
+}
+
+/* Printable ID Card Styling */
+.id-card-container {
+    perspective: 1000px;
+    width: 350px;
+    height: 220px;
+    margin: 20px auto;
+}
+
+.traditional-id-card {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary) 0%, #081a30 100%);
+    border: 3px double var(--accent);
+    border-radius: 14px;
+    padding: 15px;
+    color: #ffffff;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    font-family: 'Outfit', sans-serif;
+    overflow: hidden;
+}
+
+.traditional-id-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: url('../images/card_pattern.png') repeat;
+    opacity: 0.05;
+}
+
+.id-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+}
+
+.id-logo {
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--accent);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.id-title-text h5 {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.id-title-text p {
+    margin: 0;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+}
+
+.id-body {
+    display: flex;
+    gap: 12px;
+}
+
+.id-photo-box {
+    width: 75px;
+    height: 90px;
+    border: 2px solid var(--accent);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.id-photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.id-details {
+    flex-grow: 1;
+    font-size: 0.75rem;
+}
+
+.id-details table {
+    width: 100%;
+}
+
+.id-details td {
+    padding: 2px 0;
+    vertical-align: top;
+}
+
+.id-label {
+    color: var(--accent);
+    font-weight: 500;
+    width: 60px;
+}
+
+.id-value {
+    color: #ffffff;
+    font-weight: 400;
+}
+
+.id-footer {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 5px;
+    font-size: 0.55rem;
+    color: rgba(255,255,255,0.6);
+}
+
+.id-qr {
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .id-card-container, .id-card-container * {
+        visibility: visible;
+    }
+    .id-card-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0;
+        box-shadow: none;
+    }
+}
+
+/* Premium Buttons Styling */
+.btn-royal {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+    color: #ffffff !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 30px !important;
+    padding: 12px 30px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    font-size: 0.9rem !important;
+    box-shadow: 0 5px 15px rgba(42, 82, 152, 0.4) !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.btn-royal:hover {
+    background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%) !important;
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 20px rgba(42, 82, 152, 0.6), 0 0 10px rgba(212, 175, 55, 0.3) !important;
+}
+
+.btn-royal:active {
+    transform: translateY(1px) !important;
+    box-shadow: 0 2px 5px rgba(42, 82, 152, 0.2) !important;
+}
+
+.btn-accent {
+    background: linear-gradient(135deg, #F1C40F 0%, #F39C12 100%) !important;
+    color: #0c2340 !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 30px !important;
+    padding: 12px 30px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    font-size: 0.9rem !important;
+    box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4) !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.btn-accent:hover {
+    background: linear-gradient(135deg, #F39C12 0%, #F1C40F 100%) !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 20px rgba(243, 156, 18, 0.6) !important;
+}
+
+.btn-accent:active {
+    transform: translateY(1px) !important;
+    box-shadow: 0 2px 5px rgba(243, 156, 18, 0.2) !important;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 992px) {
+    .admin-wrapper {
+        flex-direction: column;
+    }
+    .admin-sidebar {
+        width: 100% !important;
+        border-right: none !important;
+        border-bottom: 3px solid var(--accent);
+    }
+    .sidebar-menu {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px;
+        justify-content: center;
+    }
+    .sidebar-menu li {
+        margin: 5px;
+    }
+    .sidebar-menu li a {
+        padding: 8px 15px !important;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        border-left: none !important;
+    }
+    .sidebar-menu li a:hover, 
+    .sidebar-menu li.active a {
+        background-color: rgba(255,255,255,0.08) !important;
+        border-left-color: transparent !important;
+        border-bottom: 2px solid var(--accent);
+    }
+    .admin-navbar {
+        padding: 15px;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    .admin-body {
+        padding: 15px !important;
+    }
+}
+
+

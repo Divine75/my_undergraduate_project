@@ -1,0 +1,6 @@
+# Git ignore file for ATAMIS
+.gemini/
+verify.log
+*.log
+.vscode/
+.idea/
