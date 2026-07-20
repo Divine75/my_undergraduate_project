@@ -308,3 +308,10 @@ h1, h2, h3, h4, h5, h6, .royal-title {
     transform: translateY(1px) !important;
     box-shadow: 0 2px 5px rgba(243, 156, 18, 0.2) !important;
 }
+
+.btn-royal.btn-sm,
+.btn-accent.btn-sm {
+    padding: 5px 12px !important;
+    font-size: 0.78rem !important;
+    border-radius: 16px !important;
+}
