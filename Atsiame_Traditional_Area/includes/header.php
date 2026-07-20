@@ -29,7 +29,11 @@ $translations = [
         'welcome' => 'Woezor to Atsiame Traditional Area',
         'subtitle' => 'Customary seat of the Katsriku Stool, preserving our history, ancestry, and royal lineage.',
         'view_clans' => 'View Clan Registry',
-        'view_history' => 'Read State History'
+        'view_history' => 'Read State History',
+        'stat_clans' => 'Clans',
+        'stat_members' => 'Registered Members',
+        'stat_chiefs' => 'Stool Leadership',
+        'stat_docs' => 'Archived Files'
     ],
     'ee' => [
         'home' => 'Aƒeme',
@@ -44,7 +48,11 @@ $translations = [
         'welcome' => 'Woezor yi Atsiame Mɔ̃ wo ƒe nuto me',
         'subtitle' => 'Katsriku Zikpui Kɔkɔe la ƒe nɔƒe kple dzɔtsoƒe kple fia kɔkɔe ƒe dzɔdzɔme dzadzraɖoƒe.',
         'view_clans' => 'Kpɔ Togbuiwo kple Tsiãwo',
-        'view_history' => 'Xlẽ Nuto la ƒe Ŋutinya'
+        'view_history' => 'Xlẽ Nuto la ƒe Ŋutinya',
+        'stat_clans' => 'Tsiãwo',
+        'stat_members' => 'Mewowɔ ŋkɔwo',
+        'stat_chiefs' => 'Fiawo / Zikpuitɔwo',
+        'stat_docs' => 'Agbalẽwo'
     ]
 ];
 

@@ -54,19 +54,19 @@ try {
         <div class="row text-center">
             <div class="col-md-3 col-6 mb-3 mb-md-0 border-end">
                 <h3 class="text-success font-weight-bold m-0" style="font-family: 'Outfit', sans-serif; font-weight: 700;"><?php echo $totalClans; ?></h3>
-                <small class="text-muted text-uppercase">Clans</small>
+                <small class="text-muted text-uppercase"><?php echo __('stat_clans'); ?></small>
             </div>
             <div class="col-md-3 col-6 mb-3 mb-md-0 border-end">
                 <h3 class="text-success font-weight-bold m-0" style="font-family: 'Outfit', sans-serif; font-weight: 700;"><?php echo $totalMembers; ?></h3>
-                <small class="text-muted text-uppercase">Registered Members</small>
+                <small class="text-muted text-uppercase"><?php echo __('stat_members'); ?></small>
             </div>
             <div class="col-md-3 col-6 border-end">
                 <h3 class="text-success font-weight-bold m-0" style="font-family: 'Outfit', sans-serif; font-weight: 700;"><?php echo $totalChiefs; ?></h3>
-                <small class="text-muted text-uppercase">Stool Leadership</small>
+                <small class="text-muted text-uppercase"><?php echo __('stat_chiefs'); ?></small>
             </div>
             <div class="col-md-3 col-6">
                 <h3 class="text-success font-weight-bold m-0" style="font-family: 'Outfit', sans-serif; font-weight: 700;"><?php echo $totalDocs; ?></h3>
-                <small class="text-muted text-uppercase">Archived Files</small>
+                <small class="text-muted text-uppercase"><?php echo __('stat_docs'); ?></small>
             </div>
         </div>
     </div>
